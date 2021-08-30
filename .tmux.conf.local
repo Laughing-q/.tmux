@@ -64,6 +64,16 @@ tmux_conf_theme_colour_15="#080808"   # dark gray
 tmux_conf_theme_colour_16="#d70000"   # red
 tmux_conf_theme_colour_17="#e4e4e4"   # white
 
+# color by laughing-q
+laughing_conf_theme_colour_1="#f69c9f"
+laughing_conf_theme_colour_2="#009ad6"
+laughing_conf_theme_colour_3='#f58220'
+laughing_conf_theme_colour_4="#f15b6c"
+laughing_conf_theme_colour_5="#c77eb5"
+laughing_conf_theme_colour_6="#8552a1"
+laughing_conf_theme_colour_7="#411445"
+laughing_conf_theme_colour_8="#472d56"
+
 # default theme (ansi)
 #tmux_conf_theme_colour_1="colour0"
 #tmux_conf_theme_colour_2="colour8"
@@ -110,12 +120,12 @@ tmux_conf_theme_pane_active_indicator="$tmux_conf_theme_colour_4"
 
 # status line style
 tmux_conf_theme_message_fg="$tmux_conf_theme_colour_1"
-tmux_conf_theme_message_bg="$tmux_conf_theme_colour_5"
+tmux_conf_theme_message_bg="$laughing_conf_theme_colour_2"
 tmux_conf_theme_message_attr="bold"
 
 # status line command style (<prefix> : Escape)
 tmux_conf_theme_message_command_fg="$tmux_conf_theme_colour_5"
-tmux_conf_theme_message_command_bg="$tmux_conf_theme_colour_1"
+tmux_conf_theme_message_command_bg="$laughing_conf_theme_colour_1"
 tmux_conf_theme_message_command_attr="bold"
 
 # window modes style
@@ -125,7 +135,7 @@ tmux_conf_theme_mode_attr="bold"
 
 # status line style
 tmux_conf_theme_status_fg="$tmux_conf_theme_colour_3"
-tmux_conf_theme_status_bg="$tmux_conf_theme_colour_1"
+tmux_conf_theme_status_bg="$laughing_conf_theme_colour_1"
 tmux_conf_theme_status_attr="none"
 
 # terminal title
@@ -231,12 +241,12 @@ tmux_conf_theme_status_right=" #{prefix}#{mouse}#{pairing}#{synchronized}#{?batt
 
 # status left style
 tmux_conf_theme_status_left_fg="$tmux_conf_theme_colour_6,$tmux_conf_theme_colour_7,$tmux_conf_theme_colour_8"
-tmux_conf_theme_status_left_bg="$tmux_conf_theme_colour_9,$tmux_conf_theme_colour_10,$tmux_conf_theme_colour_11"
+tmux_conf_theme_status_left_bg="$laughing_conf_theme_colour_3,$laughing_conf_theme_colour_4,$tmux_conf_theme_colour_11"
 tmux_conf_theme_status_left_attr="bold,none,none"
 
 # status right style
-tmux_conf_theme_status_right_fg="$tmux_conf_theme_colour_12,$tmux_conf_theme_colour_13,$tmux_conf_theme_colour_14"
-tmux_conf_theme_status_right_bg="$tmux_conf_theme_colour_15,$tmux_conf_theme_colour_16,$tmux_conf_theme_colour_17"
+tmux_conf_theme_status_right_fg="$laughing_conf_theme_colour_8,$tmux_conf_theme_colour_13,$laughing_conf_theme_colour_8"
+tmux_conf_theme_status_right_bg="$laughing_conf_theme_colour_5,$laughing_conf_theme_colour_5,$laughing_conf_theme_colour_5"
 tmux_conf_theme_status_right_attr="none,none,bold"
 
 # pairing indicator
@@ -404,3 +414,22 @@ tmux_conf_update_plugins_on_reload=true
 #
 # "$@"
 # # /!\ do not remove the previous line
+#
+
+
+# Laughing-q config
+#
+# set -g prefix2 M                        # GNU-Screen compatible prefix
+# bind M send-prefix -2
+#
+# pane navigation
+bind -r j select-pane -L  # move left
+bind -r k select-pane -D  # move down
+bind -r i select-pane -U  # move up
+bind -r l select-pane -R  # move right
+
+# pane resizing
+bind -r Left resize-pane -L 2
+bind -r Down resize-pane -D 2
+bind -r Up resize-pane -U 2
+bind -r Right resize-pane -R 2
