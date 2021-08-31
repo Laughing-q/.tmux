@@ -73,6 +73,7 @@ laughing_conf_theme_colour_5="#c77eb5"
 laughing_conf_theme_colour_6="#8552a1"
 laughing_conf_theme_colour_7="#411445"
 laughing_conf_theme_colour_8="#472d56"
+laughing_conf_theme_colour_9="#7bbfea"
 
 # default theme (ansi)
 #tmux_conf_theme_colour_1="colour0"
@@ -160,8 +161,8 @@ tmux_conf_theme_terminal_title="#h ❐ #S ● #I #W"
 #     - #{hostname_full_ssh}
 #     - #{username}
 #     - #{username_ssh}
-tmux_conf_theme_window_status_fg="$tmux_conf_theme_colour_3"
-tmux_conf_theme_window_status_bg="$tmux_conf_theme_colour_1"
+tmux_conf_theme_window_status_fg="$laughing_conf_theme_colour_8"
+tmux_conf_theme_window_status_bg="$laughing_conf_theme_colour_1"
 tmux_conf_theme_window_status_attr="none"
 tmux_conf_theme_window_status_format="#I #W"
 #tmux_conf_theme_window_status_format="#{circled_window_index} #W"
@@ -177,8 +178,8 @@ tmux_conf_theme_window_status_format="#I #W"
 #     - #{hostname_full_ssh}
 #     - #{username}
 #     - #{username_ssh}
-tmux_conf_theme_window_status_current_fg="$tmux_conf_theme_colour_1"
-tmux_conf_theme_window_status_current_bg="$tmux_conf_theme_colour_4"
+tmux_conf_theme_window_status_current_fg="$laughing_conf_theme_colour_8"
+tmux_conf_theme_window_status_current_bg="$laughing_conf_theme_colour_9"
 tmux_conf_theme_window_status_current_attr="bold"
 tmux_conf_theme_window_status_current_format="#I #W"
 #tmux_conf_theme_window_status_current_format="#{circled_window_index} #W"
@@ -195,8 +196,8 @@ tmux_conf_theme_window_status_bell_bg="default"
 tmux_conf_theme_window_status_bell_attr="blink,bold"
 
 # window last status style
-tmux_conf_theme_window_status_last_fg="$tmux_conf_theme_colour_4"
-tmux_conf_theme_window_status_last_bg="$tmux_conf_theme_colour_2"
+tmux_conf_theme_window_status_last_fg="$laughing_conf_theme_colour_6"
+tmux_conf_theme_window_status_last_bg="$laughing_conf_theme_colour_1"
 tmux_conf_theme_window_status_last_attr="none"
 
 # status left/right sections separators
@@ -348,8 +349,9 @@ tmux_conf_copy_to_os_clipboard=false
 #set -g mode-keys vi
 
 # replace C-b by C-a instead of using both prefixes
-# set -gu prefix2
+set -gu prefix2
 # unbind C-a
+# unbind-key C-a
 # unbind C-b
 # set -g prefix C-a
 # bind C-a send-prefix
@@ -429,7 +431,17 @@ bind -r i select-pane -U  # move up
 bind -r l select-pane -R  # move right
 
 # pane resizing
-bind -r Left resize-pane -L 2
-bind -r Down resize-pane -D 2
-bind -r Up resize-pane -U 2
-bind -r Right resize-pane -R 2
+bind -n M-Left resize-pane -L 2
+bind -n M-Down resize-pane -D 2
+bind -n M-Up resize-pane -U 2
+bind -n M-Right resize-pane -R 2
+
+# window navigation
+bind -n M-j previous-window # select previous window
+bind -n M-l next-window     # select next window
+# bind -r n new-window -c "#{pane_current_path}"
+# bind -r n new-window -n "#{pane_current_path}"
+bind -n M-n new-window -n "#{pane_current_path}"
+
+# sessions
+bind -r C-n new-session
