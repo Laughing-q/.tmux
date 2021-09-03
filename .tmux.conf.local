@@ -445,3 +445,6 @@ bind -n M-n new-window -n "#{pane_current_path}"
 
 # sessions
 bind -r C-n new-session
+
+# detach
+# bind -r d detach
